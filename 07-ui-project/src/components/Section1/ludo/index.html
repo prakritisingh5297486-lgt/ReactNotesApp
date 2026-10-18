@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Real Ludo Game</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         GAME TITLE
+    ========================== -->
+
+    <header class="game-header">
+
+        <h1>🎲 Ludo Game</h1>
+
+        <p>Classic Ludo</p>
+
+    </header>
+
+
+    <!-- =========================
+         MAIN GAME
+    ========================== -->
+
+    <main class="game-container">
+
+
+        <!-- =========================
+             LUDO BOARD
+        ========================== -->
+
+        <section class="ludo-section">
+
+            <div id="board" class="ludo-board">
+
+                <!--
+                    JavaScript will create
+                    all 225 cells here.
+                -->
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             GAME PANEL
+        ========================== -->
+
+        <aside class="game-panel">
+
+
+            <!-- CURRENT PLAYER -->
+
+            <div class="panel-card">
+
+                <h2>Current Turn</h2>
+
+                <div
+                    id="currentPlayer"
+                    class="current-player red"
+                >
+                    🔴 Red Player
+                </div>
+
+            </div>
+
+
+            <!-- DICE -->
+
+            <div class="panel-card dice-card">
+
+                <h2>Dice</h2>
+
+                <div
+                    id="dice"
+                    class="dice"
+                >
+                    🎲
+                </div>
+
+                <button
+                    id="rollDice"
+                    class="roll-button"
+                >
+                    Roll Dice
+                </button>
+
+            </div>
+
+
+            <!-- MESSAGE -->
+
+            <div class="panel-card">
+
+                <h2>Game Status</h2>
+
+                <p id="gameMessage">
+                    Red Player's turn
+                </p>
+
+            </div>
+
+
+            <!-- PLAYER LIST -->
+
+            <div class="panel-card">
+
+                <h2>Players</h2>
+
+                <div class="player-list">
+
+
+                    <!-- RED -->
+
+                    <div
+                        class="player-item active"
+                        id="player-red"
+                    >
+
+                        <span class="player-dot red-dot"></span>
+
+                        <span>Red</span>
+
+                        <span class="token-count">
+                            0 / 4
+                        </span>
+
+                    </div>
+
+
+                    <!-- GREEN -->
+
+                    <div
+                        class="player-item"
+                        id="player-green"
+                    >
+
+                        <span class="player-dot green-dot"></span>
+
+                        <span>Green</span>
+
+                        <span class="token-count">
+                            0 / 4
+                        </span>
+
+                    </div>
+
+
+                    <!-- YELLOW -->
+
+                    <div
+                        class="player-item"
+                        id="player-yellow"
+                    >
+
+                        <span class="player-dot yellow-dot"></span>
+
+                        <span>Yellow</span>
+
+                        <span class="token-count">
+                            0 / 4
+                        </span>
+
+                    </div>
+
+
+                    <!-- BLUE -->
+
+                    <div
+                        class="player-item"
+                        id="player-blue"
+                    >
+
+                        <span class="player-dot blue-dot"></span>
+
+                        <span>Blue</span>
+
+                        <span class="token-count">
+                            0 / 4
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 GAME RULES
+            ========================== -->
+
+            <div class="panel-card rules">
+
+                <h2>Rules</h2>
+
+                <ul>
+
+                    <li>🎲 Roll the dice</li>
+
+                    <li>6 brings a token out</li>
+
+                    <li>6 gives another turn</li>
+
+                    <li>Capture opponent tokens</li>
+
+                    <li>Safe cells protect tokens</li>
+
+                    <li>Reach home to win</li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- =========================
+                 RESET BUTTON
+            ========================== -->
+
+            <button
+                id="resetGame"
+                class="reset-button"
+            >
+                🔄 New Game
+            </button>
+
+        </aside>
+
+    </main>
+
+
+    <!-- =========================
+         WINNER MODAL
+    ========================== -->
+
+    <div
+        id="winnerModal"
+        class="winner-modal hidden"
+    >
+
+        <div class="winner-box">
+
+            <div class="winner-icon">
+                🏆
+            </div>
+
+            <h2 id="winnerTitle">
+                Red Wins!
+            </h2>
+
+            <p>
+                Congratulations!
+            </p>
+
+            <button
+                id="playAgain"
+                class="roll-button"
+            >
+                Play Again
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

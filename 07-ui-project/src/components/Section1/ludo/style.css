@@ -1,0 +1,1062 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --red: #e53935;
+    --red-dark: #b71c1c;
+    --red-light: #ffcdd2;
+
+    --green: #43a047;
+    --green-dark: #1b5e20;
+    --green-light: #c8e6c9;
+
+    --yellow: #fbc02d;
+    --yellow-dark: #f57f17;
+    --yellow-light: #fff9c4;
+
+    --blue: #1e88e5;
+    --blue-dark: #0d47a1;
+    --blue-light: #bbdefb;
+
+    --board-line: #333;
+    --cell: #ffffff;
+}
+
+
+/* =====================================
+   BODY
+===================================== */
+
+body {
+    min-height: 100vh;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #151515,
+            #292929
+        );
+
+    color: #fff;
+
+    padding: 25px;
+}
+
+
+/* =====================================
+   HEADER
+===================================== */
+
+.game-header {
+    text-align: center;
+
+    margin-bottom: 25px;
+}
+
+.game-header h1 {
+    font-size: 38px;
+
+    margin-bottom: 5px;
+}
+
+.game-header p {
+    color: #bbb;
+
+    font-size: 16px;
+}
+
+
+/* =====================================
+   MAIN GAME
+===================================== */
+
+.game-container {
+
+    width: min(
+        1250px,
+        100%
+    );
+
+    margin: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 35px;
+}
+
+
+/* =====================================
+   BOARD SECTION
+===================================== */
+
+.ludo-section {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+/* =====================================
+   LUDO BOARD
+===================================== */
+
+.ludo-board {
+
+    width: min(
+        720px,
+        80vw
+    );
+
+    aspect-ratio: 1 / 1;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(15, 1fr);
+
+    grid-template-rows:
+        repeat(15, 1fr);
+
+    background: #fff;
+
+    border: 6px solid #111;
+
+    border-radius: 4px;
+
+    box-shadow:
+        0 15px 40px
+        rgba(0, 0, 0, 0.5);
+
+    overflow: hidden;
+}
+
+
+/* =====================================
+   BOARD CELL
+===================================== */
+
+.cell {
+
+    position: relative;
+
+    background: var(--cell);
+
+    border: 1px solid var(--board-line);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+/* =====================================
+   HOME AREAS
+===================================== */
+
+.red-home {
+    background: var(--red);
+}
+
+.green-home {
+    background: var(--green);
+}
+
+.yellow-home {
+    background: var(--yellow);
+}
+
+.blue-home {
+    background: var(--blue);
+}
+
+
+/* =====================================
+   HOME INNER BOX
+===================================== */
+
+.home-inner {
+
+    width: 78%;
+
+    height: 78%;
+
+    background: #fff;
+
+    border: 3px solid #222;
+
+    border-radius: 12px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    grid-template-rows:
+        repeat(2, 1fr);
+
+    gap: 10px;
+
+    padding: 10px;
+
+    box-shadow:
+        inset 0 0 8px
+        rgba(0, 0, 0, 0.15);
+}
+
+
+/* =====================================
+   TOKEN HOME SPOT
+===================================== */
+
+.token-home {
+
+    width: 100%;
+
+    height: 100%;
+
+    border-radius: 50%;
+
+    background: #fff;
+
+    border: 2px solid #444;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+/* =====================================
+   TOKENS
+===================================== */
+
+.token {
+
+    width: 72%;
+
+    aspect-ratio: 1 / 1;
+
+    max-width: 32px;
+
+    border-radius: 50%;
+
+    border: 3px solid #fff;
+
+    box-shadow:
+        0 2px 4px
+        rgba(0, 0, 0, 0.5),
+
+        0 0 0 2px
+        rgba(0, 0, 0, 0.65);
+
+    cursor: pointer;
+
+    position: relative;
+
+    z-index: 20;
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+
+.token:hover {
+
+    transform: scale(1.15);
+
+    box-shadow:
+        0 3px 7px
+        rgba(0, 0, 0, 0.5),
+
+        0 0 0 3px
+        rgba(255, 255, 255, 0.8);
+}
+
+
+/* TOKEN COLORS */
+
+.token.red {
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #ff8a80,
+            var(--red-dark)
+        );
+}
+
+.token.green {
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #b9f6ca,
+            var(--green-dark)
+        );
+}
+
+.token.yellow {
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #fff59d,
+            var(--yellow-dark)
+        );
+}
+
+.token.blue {
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #90caf9,
+            var(--blue-dark)
+        );
+}
+
+
+/* =====================================
+   COMMON PATH
+===================================== */
+
+.path {
+
+    background: #fff;
+
+    border: 1px solid #333;
+}
+
+
+/* =====================================
+   COLORED PATH
+===================================== */
+
+.red-path {
+    background: var(--red-light);
+}
+
+.green-path {
+    background: var(--green-light);
+}
+
+.yellow-path {
+    background: var(--yellow-light);
+}
+
+.blue-path {
+    background: var(--blue-light);
+}
+
+
+/* =====================================
+   START CELLS
+===================================== */
+
+.start-red {
+    background: var(--red) !important;
+}
+
+.start-green {
+    background: var(--green) !important;
+}
+
+.start-yellow {
+    background: var(--yellow) !important;
+}
+
+.start-blue {
+    background: var(--blue) !important;
+}
+
+
+/* =====================================
+   SAFE CELLS
+===================================== */
+
+.safe-cell::after {
+
+    content: "★";
+
+    position: absolute;
+
+    font-size: 15px;
+
+    color: #555;
+
+    z-index: 1;
+}
+
+
+/* =====================================
+   CENTER HOME
+===================================== */
+
+.center {
+
+    background:
+        conic-gradient(
+            var(--green) 0deg 90deg,
+            var(--yellow) 90deg 180deg,
+            var(--blue) 180deg 270deg,
+            var(--red) 270deg 360deg
+        ) !important;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: 2px solid #222;
+
+    color: white;
+
+    font-size: 22px;
+
+    font-weight: bold;
+}
+
+
+/* =====================================
+   CENTER HOME ICON
+===================================== */
+
+.center span {
+
+    background: #fff;
+
+    width: 55%;
+
+    height: 55%;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: #222;
+
+    font-size: 20px;
+}
+
+
+/* =====================================
+   GAME PANEL
+===================================== */
+
+.game-panel {
+
+    width: 300px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px;
+}
+
+
+/* =====================================
+   PANEL CARD
+===================================== */
+
+.panel-card {
+
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.12);
+
+    border-radius: 14px;
+
+    padding: 18px;
+
+    backdrop-filter: blur(10px);
+
+    box-shadow:
+        0 8px 25px
+        rgba(0, 0, 0, 0.25);
+}
+
+
+.panel-card h2 {
+
+    font-size: 17px;
+
+    margin-bottom: 12px;
+
+    color: #eee;
+}
+
+
+/* =====================================
+   CURRENT PLAYER
+===================================== */
+
+.current-player {
+
+    padding: 12px;
+
+    border-radius: 8px;
+
+    text-align: center;
+
+    font-weight: bold;
+}
+
+.current-player.red {
+    background: var(--red);
+}
+
+.current-player.green {
+    background: var(--green);
+}
+
+.current-player.yellow {
+
+    background: var(--yellow);
+
+    color: #222;
+}
+
+.current-player.blue {
+    background: var(--blue);
+}
+
+
+/* =====================================
+   DICE
+===================================== */
+
+.dice-card {
+
+    text-align: center;
+}
+
+
+.dice {
+
+    width: 90px;
+
+    height: 90px;
+
+    margin:
+        10px auto
+        18px;
+
+    background: #fff;
+
+    color: #222;
+
+    border-radius: 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 52px;
+
+    box-shadow:
+        0 5px 15px
+        rgba(0, 0, 0, 0.35);
+
+    user-select: none;
+}
+
+
+/* =====================================
+   ROLL BUTTON
+===================================== */
+
+.roll-button {
+
+    width: 100%;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: #fff;
+
+    color: #222;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s ease,
+        background 0.15s ease;
+}
+
+
+.roll-button:hover {
+
+    background: #ddd;
+
+    transform: translateY(-2px);
+}
+
+
+.roll-button:active {
+
+    transform: scale(0.97);
+}
+
+
+/* =====================================
+   GAME MESSAGE
+===================================== */
+
+#gameMessage {
+
+    color: #ccc;
+
+    line-height: 1.5;
+
+    font-size: 14px;
+}
+
+
+/* =====================================
+   PLAYER LIST
+===================================== */
+
+.player-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+
+.player-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 9px;
+
+    border-radius: 7px;
+
+    background:
+        rgba(255, 255, 255, 0.05);
+
+    transition: background 0.2s;
+}
+
+
+.player-item.active {
+
+    background:
+        rgba(255, 255, 255, 0.15);
+}
+
+
+.player-dot {
+
+    width: 13px;
+
+    height: 13px;
+
+    border-radius: 50%;
+
+    display: inline-block;
+}
+
+
+.red-dot {
+    background: var(--red);
+}
+
+.green-dot {
+    background: var(--green);
+}
+
+.yellow-dot {
+    background: var(--yellow);
+}
+
+.blue-dot {
+    background: var(--blue);
+}
+
+
+.token-count {
+
+    margin-left: auto;
+
+    color: #aaa;
+
+    font-size: 12px;
+}
+
+
+/* =====================================
+   RULES
+===================================== */
+
+.rules ul {
+
+    list-style: none;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+
+.rules li {
+
+    color: #ccc;
+
+    font-size: 13px;
+}
+
+
+/* =====================================
+   RESET BUTTON
+===================================== */
+
+.reset-button {
+
+    width: 100%;
+
+    padding: 12px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: #444;
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: background 0.2s;
+}
+
+
+.reset-button:hover {
+
+    background: #555;
+}
+
+
+/* =====================================
+   WINNER MODAL
+===================================== */
+
+.winner-modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        rgba(0, 0, 0, 0.75);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    z-index: 1000;
+}
+
+
+.winner-modal.hidden {
+
+    display: none;
+}
+
+
+.winner-box {
+
+    width: min(
+        350px,
+        90%
+    );
+
+    padding: 35px;
+
+    background: #292929;
+
+    border-radius: 20px;
+
+    text-align: center;
+
+    box-shadow:
+        0 20px 60px
+        rgba(0, 0, 0, 0.6);
+}
+
+
+.winner-icon {
+
+    font-size: 70px;
+
+    margin-bottom: 10px;
+}
+
+
+.winner-box h2 {
+
+    font-size: 28px;
+
+    margin-bottom: 8px;
+}
+
+
+.winner-box p {
+
+    color: #bbb;
+
+    margin-bottom: 20px;
+}
+
+
+/* =====================================
+   TOKEN MOVEMENT ANIMATION
+===================================== */
+
+.token-moving {
+
+    animation:
+        tokenBounce
+        0.25s
+        ease;
+}
+
+
+@keyframes tokenBounce {
+
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.25);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media (max-width: 1050px) {
+
+    .game-container {
+
+        flex-direction: column;
+
+    }
+
+    .game-panel {
+
+        width: min(
+            600px,
+            90vw
+        );
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .reset-button {
+
+        grid-column: 1 / -1;
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    body {
+
+        padding: 15px;
+
+    }
+
+    .game-header h1 {
+
+        font-size: 28px;
+
+    }
+
+    .ludo-board {
+
+        width: 95vw;
+
+    }
+
+    .game-panel {
+
+        width: 95vw;
+
+        display: flex;
+
+    }
+
+    .panel-card {
+
+        padding: 14px;
+
+    }
+
+    .dice {
+
+        width: 75px;
+
+        height: 75px;
+
+        font-size: 42px;
+
+    }
+
+    .token {
+
+        max-width: 24px;
+
+        border-width: 2px;
+
+    }
+
+}
+
+/* =====================================
+   REAL CENTER HOME
+===================================== */
+
+.center-home {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    border: 2px solid #222;
+
+    overflow: hidden;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+
+    z-index: 5;
+}
+
+
+/* Four colored sections */
+
+.red-triangle {
+    background: #e53935;
+}
+
+.green-triangle {
+    background: #43a047;
+}
+
+.yellow-triangle {
+    background: #fbc02d;
+}
+
+.blue-triangle {
+    background: #1e88e5;
+}
+
+
+/* Center house */
+
+.center-house {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 45px;
+    height: 45px;
+
+    background: white;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 22px;
+
+    border: 3px solid #222;
+
+    box-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.4);
+
+    z-index: 10;
+}
+
+/* =====================================
+   FIXED LUDO CENTER
+===================================== */
+
+.center-part {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #333;
+
+    font-size: 22px;
+    position: relative;
+    z-index: 5;
+}
